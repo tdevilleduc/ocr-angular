@@ -11,7 +11,7 @@ export class AppComponent {
   appareils = [
     {
       name: 'Machine à laver',
-      status: 'éteint'
+      status: 'allumé'
     },
     {
       name: 'Télévision',
