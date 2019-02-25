@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Post } from '../post';
 
 @Component({
   selector: 'app-post-list-item',
@@ -8,19 +9,21 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PostListItemComponent implements OnInit {
 
   @Input()
+  post: Post;
+  
   postTitle: string;
-  @Input()
   postContent: string;
-  @Input()
   postCreatedAt: Date;
-  @Input()
   loveIts: number;
 
   constructor() { 
-
   }
 
   ngOnInit() {
+    this.postTitle = this.post.title;
+    this.postContent = this.post.content;
+    this.postCreatedAt = this.post.created_at;
+    this.loveIts = this.post.loveIts;
   }
 
   onLike() {
