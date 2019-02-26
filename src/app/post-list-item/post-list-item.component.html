@@ -1,14 +1,13 @@
-<li  [ngClass]="{'list-group-item': true, 
-                 'list-group-item-success': post.loveIts > 0,
-                 'list-group-item-danger': post.loveIts < 0 }">
-  <h4 [ngClass]="{'text-success': post.loveIts > 0,
-                  'text-danger': post.loveIts < 0  }"> {{ post.title }} </h4>
-  <h4 class="text-muted"> {{ post.created_at | date: 'dd/MM/yyyy hh:mm'}} </h4>
-  <p [ngClass]="{'text-success': post.loveIts > 0,
-                 'text-danger': post.loveIts < 0  }"> {{ post.content }} </p>
+<li class="list-group-item" [ngClass]="{'list-group-item-success': post.loveIts > 0,
+                                        'list-group-item-danger': post.loveIts < 0 }">
+        <div class="post-title-container">
+                <h4 class="post-title"> {{ post.title }} </h4>
+                <div class="post-date"> {{ post.created_at | date: 'dd/MM/yyyy, hh:mm a'}} </div>
+        </div> 
+        <p> {{ post.content }} </p>
 
-  <button class="btn btn-success" 
-          (click)="onLike()">Like it!</button>
-  <button class="btn btn-danger" 
-          (click)="onDontLike()">Dont like it!</button>
+        <button class="btn btn-success" 
+                (click)="onLike()">Like it!</button>
+        <button class="btn btn-danger" 
+                (click)="onDontLike()">Dont like it!</button>
 </li>
