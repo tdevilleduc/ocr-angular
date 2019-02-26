@@ -7,7 +7,8 @@
     <app-appareil *ngFor="let appareil of appareils; let i = index"
                   [indexOfAppareil]="i"
                   [appareilName]="appareil.name" 
-                  [appareilStatus] = "appareil.status"></app-appareil>
+                  [appareilStatus] = "appareil.status"
+                  [appareilId]="appareil.id"></app-appareil>
   </ul>
 
   <div class="btn-toolbar">
