@@ -10,8 +10,6 @@ import { Subscription } from 'rxjs';
 })
 export class AppareilViewComponent implements OnInit {
 
-  isAuth = false;
-
   lastUpdate = new Promise(
     (resolve, reject) => {
       const date = new Date();
@@ -27,14 +25,7 @@ export class AppareilViewComponent implements OnInit {
   appareils: any[];
   appareilSubscription: Subscription;
 
-  constructor(private appareilService: AppareilService) {
-    setTimeout(
-      () => {
-        this.isAuth = true;
-      }, 
-      4000
-    ); 
-  }
+  constructor(private appareilService: AppareilService) {}
 
   ngOnInit() {
     this.appareilSubscription = this.appareilService.appareilSubject.subscribe(
@@ -43,21 +34,17 @@ export class AppareilViewComponent implements OnInit {
       }
     );
     this.appareilService.emitAppareilSubject();
+    // récupération des appareils depuis le backend
+    this.appareilService.getAppareilsFromServer();
   }
 
   onAllumer() {
     this.appareilService.switchOnAll();
+    this.appareilService.saveAppareilsToServer();
   }
 
   onEteindre() {
     this.appareilService.switchOffAll();
-  }
-
-  onSave() {
     this.appareilService.saveAppareilsToServer();
-  }
-
-  onFetch() {
-    this.appareilService.getAppareilsFromServer();
   }
 }

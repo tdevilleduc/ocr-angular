@@ -66,9 +66,7 @@ export class AppareilService {
     this.httpClient.
       put('https://http-client-demo-84057.firebaseio.com/appareils.json', this.appareils)
       .subscribe(
-        () => {
-          console.log('Enregistrement terminé !');
-        },
+        () => { },
         (error) => {
           console.log('Erreur de sauvegarde ! ' + error);
         }
