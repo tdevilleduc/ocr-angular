@@ -16,19 +16,19 @@ export class AppareilService {
   }
 
   getAppareilById(id: number) {
-      const appareil = this.appareils.find(
-          (appareilObject) => {
-              return appareilObject.id === id;
-          }
-      );
-      return appareil;
+    const appareil = this.appareils.find(
+        (appareilObject) => {
+            return appareilObject.id === id;
+        }
+    );
+    return appareil;
   }
 
   switchOnAll() {
-      for (let appareil of this.appareils) {
-        appareil.status = 'allumé';
-      }
-      this.emitAppareilSubject();
+    for (let appareil of this.appareils) {
+      appareil.status = 'allumé';
+    }
+    this.emitAppareilSubject();
   }
   
   switchOffAll() {
@@ -39,13 +39,13 @@ export class AppareilService {
   }
 
   switchOnOne(index: number) {
-      this.appareils[index].status = 'allumé';
-      this.emitAppareilSubject();
+    this.appareils[index].status = 'allumé';
+    this.emitAppareilSubject();
   }
 
   switchOffOne(index: number) {
-      this.appareils[index].status = 'éteint';
-      this.emitAppareilSubject();
+    this.appareils[index].status = 'éteint';
+    this.emitAppareilSubject();
   }
 
   addAppareil(name: string, status: string) {
