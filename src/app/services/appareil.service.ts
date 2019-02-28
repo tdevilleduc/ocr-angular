@@ -7,23 +7,7 @@ export class AppareilService {
     
   appareilSubject = new Subject<any[]>();
 
-  private appareils = [
-    {
-      id: 1,
-      name: 'Machine à laver',
-      status: 'éteint'
-    },
-    {
-      id: 2,
-      name: 'Télévision',
-      status: 'allumé'
-    },
-    {
-      id: 3,
-      name: 'Ordinateur portable',
-      status: 'éteint'
-    }
-  ];
+  private appareils = [];
 
   constructor(private httpClient: HttpClient) {}
 
@@ -89,5 +73,19 @@ export class AppareilService {
           console.log('Erreur de sauvegarde ! ' + error);
         }
       );
+  }
+
+  getAppareilsFromServer() {
+    this.httpClient.
+      get<any[]>('https://http-client-demo-84057.firebaseio.com/appareils.json')
+      .subscribe(
+        (response) => {
+          this.appareils = response;
+          this.emitAppareilSubject();
+        },
+        (error) => {
+          console.log('Erreur de chargement ! ' + error);
+        }
+      )
   }
 }
