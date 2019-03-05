@@ -27,14 +27,17 @@ export class BookFormComponent implements OnInit {
   initForm() {
     this.bookForm = this.formBuilder.group({
       title: ['', Validators.required],
-      author: ['', Validators.required]
+      author: ['', Validators.required],
+      synopsis: ''
     });
   }
 
   onSaveBook() {
     const title = this.bookForm.get('title').value;
     const author = this.bookForm.get('author').value;
+    const synopsis = this.bookForm.get('synopsis').value;
     const newBook = new Book(title, author);
+    newBook.synopsis = synopsis;
     if (this.fileUrl && this.fileUrl !== '') {
       newBook.photo = this.fileUrl;
     }
