@@ -12,7 +12,10 @@
         <button class="btn btn-success" 
                 (click)="onLike()">Like it!</button>
         <button class="btn btn-danger" 
-                (click)="onDontLike()">Dont like it!</button>
+                (click)="onDontLike()">Dont like it!</button>   
+        <button style="cursor: unset" class="btn btn-default">
+                <span class="glyphicon">{{ post.loveIts }}</span>
+        </button>
         <button class="btn btn-default pull-right" (click)="onDeletePost(post)">
                 <span class="glyphicon glyphicon-minus"></span>
         </button>
