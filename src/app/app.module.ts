@@ -11,12 +11,17 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { AuthService } from './services/auth.service';
+import { PostsService } from './services/posts.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },
-  { path: 'posts/list', component: PostListComponent },
-  { path: 'posts/new', component: NewPostComponent }
+  { path: 'posts/list', canActivate: [AuthGuardService], component: PostListComponent },
+  { path: 'posts/new', canActivate: [AuthGuardService], component: NewPostComponent },
+  { path: '', redirectTo: 'posts/list', pathMatch: 'full' },
+  { path: '**', redirectTo: 'posts/list' }
 ];
 
 @NgModule({
@@ -36,7 +41,11 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    PostsService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

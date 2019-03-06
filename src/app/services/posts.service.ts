@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post.model';
 import { Subject } from 'rxjs';
-//import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -20,16 +20,16 @@ export class PostsService {
   }
 
   getPosts() {
-    // firebase.database().ref('/posts')
-    //   .on('value', (data) => {
-    //     this.posts = data.val() ? data.val() : [];
-    //     this.emitPosts();
-    //   }
-    // );
+    firebase.database().ref('/posts')
+      .on('value', (data) => {
+        this.posts = data.val() ? data.val() : [];
+        this.emitPosts();
+      }
+    );
   }
 
   savePosts() {
-    // firebase.database().ref('/posts').set(this.posts);
+    firebase.database().ref('/posts').set(this.posts);
   }
 
   createNewPost(newPost: Post) {
