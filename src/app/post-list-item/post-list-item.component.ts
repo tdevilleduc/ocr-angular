@@ -21,12 +21,12 @@ export class PostListItemComponent implements OnInit {
 
   onLike() {
     this.post.loveIts++;
-    console.log('loveIts: ' + this.post.loveIts);
+    this.postsService.savePosts();
   }
 
   onDontLike() {
     this.post.loveIts--;
-    console.log('loveIts: ' + this.post.loveIts);
+    this.postsService.savePosts();
   }
 
   isPostGreen() {
