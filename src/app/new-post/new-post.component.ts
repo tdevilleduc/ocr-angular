@@ -35,6 +35,6 @@ export class NewPostComponent implements OnInit {
       formValue['content']
     );
     this.postsService.createNewPost(newPost);
-    this.router.navigate(['/posts']);
+    this.router.navigate(['/posts', 'list']);
   }
 }

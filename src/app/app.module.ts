@@ -10,9 +10,12 @@ import { NewPostComponent } from './new-post/new-post.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
 const appRoutes: Routes = [
-  { path: 'posts', component: PostListComponent },
+  { path: 'auth/signup', component: SignupComponent },
+  { path: 'auth/signin', component: SigninComponent },
+  { path: 'posts/list', component: PostListComponent },
   { path: 'posts/new', component: NewPostComponent }
 ];
 
@@ -23,7 +26,8 @@ const appRoutes: Routes = [
     PostListItemComponent,
     NewPostComponent,
     HeaderComponent,
-    SignupComponent
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
