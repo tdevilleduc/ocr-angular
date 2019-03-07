@@ -33,7 +33,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   onNewPost() {
-    this.router.navigate(['/posts', 'new']);
+    this.router.navigate(['/new']);
   }
 
 }
